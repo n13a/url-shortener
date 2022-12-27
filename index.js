@@ -24,18 +24,15 @@ app.get('/', function (req, res) {
 let arr = []
 app.post('/api/shorturl', (req, res) => {
   fetch(req.body.url)
-    .then(response => {
-      if (response.ok) {
-        arr.push(req.body.url)
-        res.json({
-          original_url: req.body.url,
-          short_url: arr.length
-        })
-      }
+    .then(_ => {
+      arr.push(req.body.url)
+      res.json({
+        original_url: req.body.url,
+        short_url: arr.length
+      })
     })
     .catch(error => {
       res.json({ error: "Invalid URL" });
-
     });
 })
 
