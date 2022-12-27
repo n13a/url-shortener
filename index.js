@@ -1,10 +1,11 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const bodyParser = require('body-parser')
-const fetch = require('node-fetch');
-const dns = require('dns');
+import * as dotenv from 'dotenv'
+dotenv.config()
+import express from 'express'
+import cors from 'cors'
+import bodyParser from 'body-parser'
+import fetch from 'node-fetch'
+
+const app = express()
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
