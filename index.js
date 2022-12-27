@@ -29,7 +29,6 @@ app.post('/api/shorturl', (req, res) => {
           original_url: req.body.url,
           short_url: arr.length
         })
-      } else {
       }
     })
     .catch(error => {
