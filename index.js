@@ -21,20 +21,21 @@ app.get('/', function (req, res) {
 
 let arr = []
 app.post('/api/shorturl', (req, res) => {
-  try {
-    givenURL = new URL (req.body.url);
-    res.json({fuck: 'YEAH'})
-} catch (error) {
-  res.json({error: 'Invalid URL'})
-    
-}
-  // arr.push(req.body.url)
-  // res.json({
-  //   original_url: req.body.url,
-  //   short_url: arr.length
-  // })
+  fetch(req.body.url)
+    .then(response => {
+      if (response.ok) {
+        arr.push(req.body.url)
+        res.json({
+          original_url: req.body.url,
+          short_url: arr.length
+        })
+      } else {
+      }
+    })
+    .catch(error => {
+      res.json({ error: "Invalid URL" });
 
-
+    });
 })
 
 app.get('/api/shorturl/:url', (req, res) => {
